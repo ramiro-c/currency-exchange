@@ -1,0 +1,19 @@
+header {
+  height: var(--header-height);
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background-color: var(--header-bg-color);
+  box-shadow: 0px 4px 4px 0px #00000040;
+  display: flex;
+}
+
+header h1 {
+  color: #fff;
+  font-size: 1.3rem;
+  margin-left: 5%;
+  font-weight: 600;
+  line-height: 20px;
+  letter-spacing: 0;
+  align-self: center;
+}
