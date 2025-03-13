@@ -1,0 +1,44 @@
+.currency-input {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 1.1rem;
+}
+
+.currency-input input {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid var(--input-border-color);
+  color: var(--text-main-color);
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.currency-input input:focus {
+  outline: none;
+  border: 1px solid var(--bg-main-color);
+}
+.currency-input input::placeholder {
+  color: var(--text-tertiary-color);
+  font-weight: 400;
+}
+
+.input-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.currency-symbol {
+  position: absolute;
+  left: 10px;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text-main-color);
+  pointer-events: none;
+}
+
+.input-container input {
+  padding-left: 1.5rem;
+}

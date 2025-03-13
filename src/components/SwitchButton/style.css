@@ -1,0 +1,9 @@
+.switch-button {
+  width: 42px;
+  height: 42px;
+  margin-bottom: 2px;
+  border: none;
+  border-radius: 50%;
+  background-color: transparent;
+  cursor: pointer;
+}

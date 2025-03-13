@@ -4,7 +4,7 @@ main {
   margin-top: var(--header-height);
   background: linear-gradient(
     to bottom,
-    var(--main-bg-color) 36%,
-    var(--secondary-bg-color) 36%
+    var(--bg-main-color) 36%,
+    var(--bg-secondary-color) 36%
   );
 }

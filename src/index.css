@@ -12,8 +12,15 @@
   --white-color: #fff;
   --header-bg-color: #0e1342;
   --header-height: 60px;
-  --main-bg-color: #1a8dff;
-  --secondary-bg-color: #fff;
+  --bg-main-color: #1a8dff;
+  --bg-secondary-color: #fff;
+
+  --text-main-color: #000;
+  --text-secondary-color: #fff;
+  --text-tertiary-color: #757575;
+
+  --input-border-color: #ccc;
+  --input-border-focus-color: var(--bg-main-color);
 
   color: var(--white-color);
 }

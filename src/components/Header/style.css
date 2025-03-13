@@ -1,4 +1,4 @@
-header {
+.header {
   height: var(--header-height);
   position: fixed;
   top: 0;
@@ -8,8 +8,8 @@ header {
   display: flex;
 }
 
-header h1 {
-  color: #fff;
+.header > h1 {
+  color: var(--text-secondary-color);
   font-size: 1.3rem;
   margin-left: 5%;
   font-weight: 600;
