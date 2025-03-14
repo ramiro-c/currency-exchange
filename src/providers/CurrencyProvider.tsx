@@ -1,7 +1,5 @@
 import React, { createContext, useState, ReactNode, useMemo } from "react";
 
-type Currency = { code: string; name: string };
-
 export interface CurrencyContextProps {
   amount: string;
   setAmount: (amount: string) => void;

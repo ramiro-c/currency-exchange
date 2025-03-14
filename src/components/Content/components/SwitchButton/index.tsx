@@ -1,5 +1,5 @@
 import "./style.css";
-import switchIcon from "../../assets/switch-button.svg";
+import switchIcon from "../../../../assets/switch-button.svg";
 
 type SwitchButtonProps = {
   onClick: () => void;

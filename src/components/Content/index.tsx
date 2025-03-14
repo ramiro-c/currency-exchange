@@ -1,9 +1,9 @@
-import CurrencyInput from "../CurrencyInput";
-import CurrencySelect from "../CurrencySelect";
-import SwitchButton from "../SwitchButton";
-import "./style.css";
-import { useCurrency } from "../../hooks/useCurrency";
 import { useCallback } from "react";
+import { useCurrency } from "../../hooks/useCurrency";
+import CurrencyInput from "./components/CurrencyInput";
+import CurrencySelect from "./components/CurrencySelect";
+import SwitchButton from "./components/SwitchButton";
+import "./style.css";
 
 const Content = () => {
   const {
@@ -68,7 +68,7 @@ const Content = () => {
             id="from-currency-select"
             label="From:"
             currencies={currencies}
-            value={fromCurrency.code}
+            selectedCurrency={fromCurrency}
             onChange={(value) => handleCurrencyChange(value, "from")}
           />
           <SwitchButton onClick={handleSwitch} />
@@ -76,7 +76,7 @@ const Content = () => {
             id="to-currency-select"
             label="To:"
             currencies={currencies}
-            value={toCurrency.code}
+            selectedCurrency={toCurrency}
             onChange={(value) => handleCurrencyChange(value, "to")}
           />
         </div>
