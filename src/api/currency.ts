@@ -19,7 +19,7 @@ export const fetchExchangeRates = async (
 };
 
 export const fetchCurrencies = async (): Promise<
-  Record<string, { name: string }>
+  Record<string, Pick<Currency, "name" | "symbol">>
 > => {
   try {
     const response = await fetch(`${API_BASE_URL}/currencies`);
@@ -27,6 +27,8 @@ export const fetchCurrencies = async (): Promise<
     if (!response.ok) {
       throw new Error(`HTTP error! Status: ${response.status}`);
     }
+
+    // throw new Error(`Error!`);
 
     return await response.json();
   } catch (error) {

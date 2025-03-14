@@ -1,1 +1,5 @@
-type Currency = { code: string; name: string };
+type Currency = {
+  code: string;
+  name: string;
+  symbol: string;
+};
