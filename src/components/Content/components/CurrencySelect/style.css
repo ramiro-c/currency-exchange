@@ -19,14 +19,16 @@
   align-items: center;
 }
 
-.currency-select select:focus {
-  outline: none;
-  border: 1px solid var(--bg-main-color);
-}
-
 .custom-select {
   position: relative;
   display: inline-block;
+}
+
+.currency-select .select-button .selected-value {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding-right: 1rem;
 }
 
 .chevron {
@@ -80,10 +82,12 @@
 .select-dropdown::-webkit-scrollbar {
   width: 7px;
 }
+
 .select-dropdown::-webkit-scrollbar-track {
   background: #f1f1f1;
   border-radius: 25px;
 }
+
 .select-dropdown::-webkit-scrollbar-thumb {
   background: #ccc;
   border-radius: 25px;

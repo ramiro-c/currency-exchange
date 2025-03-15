@@ -1,11 +1,14 @@
-import { useCallback } from "react";
-import { useCurrency } from "../../hooks/useCurrency";
+import { useCallback, useMemo } from "react";
+import { useExchange } from "../../hooks/useExchange";
+import useWindowResize from "../../hooks/useWindowResize";
 import CurrencyInput from "./components/CurrencyInput";
 import CurrencySelect from "./components/CurrencySelect";
 import SwitchButton from "./components/SwitchButton";
 import "./style.css";
+import ExchangeInfo from "./components/ExchangeInfo";
 
 const Content = () => {
+  const { isMobile } = useWindowResize();
   const {
     amount,
     setAmount,
@@ -14,7 +17,8 @@ const Content = () => {
     toCurrency,
     setToCurrency,
     currencies,
-  } = useCurrency();
+    exchange,
+  } = useExchange();
 
   const handleSwitch = useCallback(() => {
     const newToCurrency = fromCurrency;
@@ -51,6 +55,17 @@ const Content = () => {
   const localeAmount =
     amount === "" ? "0" : parseFloat(amount).toLocaleString();
 
+  const converted = useMemo(() => {
+    if (exchange.rates && toCurrency) {
+      const numericAmount = parseFloat(amount) || 0;
+      const rate = exchange.rates[toCurrency.code] || 0;
+
+      const result = Number((numericAmount * rate).toFixed(2)).toLocaleString();
+
+      return result;
+    }
+  }, [amount, fromCurrency, toCurrency, exchange.rates]);
+
   return (
     <section className="content">
       <h2>
@@ -62,6 +77,7 @@ const Content = () => {
           <CurrencyInput
             id="currency-input"
             value={amount}
+            symbol={fromCurrency.symbol}
             onChange={handleAmountChange}
           />
           <CurrencySelect
@@ -80,7 +96,32 @@ const Content = () => {
             onChange={(value) => handleCurrencyChange(value, "to")}
           />
         </div>
+
+        <div className="results">
+          <div className="first-column">
+            <p className="converted-amount">
+              {localeAmount} {fromCurrency.name} =<br />
+              {converted} {toCurrency.name}
+            </p>
+            <p className="exchange-rate">
+              1 {fromCurrency.code} = {exchange.rates[toCurrency.code]}{" "}
+              {toCurrency.code}
+            </p>
+          </div>
+          <div className="second-column">
+            <div className="card-explanation">
+              <p>
+                We use the mid-market rate for our Converter. This is for
+                informational purposes only. You won’t receive this rate when
+                sending money.
+              </p>
+            </div>
+            {!isMobile && <ExchangeInfo />}
+          </div>
+        </div>
       </div>
+
+      {isMobile && <ExchangeInfo />}
     </section>
   );
 };

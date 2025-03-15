@@ -6,7 +6,7 @@
   width: 100%;
   gap: 2.2rem;
   padding: 2rem;
-  padding-top: 2.2rem;
+  padding-top: calc(var(--header-height) + 2.2rem);
 }
 
 .content h2 {
@@ -17,10 +17,14 @@
 .content .card {
   background-color: var(--white-color);
   box-shadow: 0px 4px 4px 0px #00000040;
-  border-radius: 1rem;
-  padding: 4rem;
+  border-radius: 8px;
+  padding: 2rem;
+  padding-bottom: 0.5rem;
   width: 85dvw;
-  height: 500px;
+  min-height: 375px;
+  height: fit-content;
+  display: flex;
+  flex-direction: column;
 }
 
 .content .selectors {
@@ -32,8 +36,84 @@
 }
 
 @media (max-width: 768px) {
+  .content {
+    gap: 1.2rem;
+  }
+
   .content .selectors {
     flex-direction: column;
     align-items: stretch;
+  }
+}
+
+.results {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 1rem;
+  width: 100%;
+  padding: 3rem 2rem 0 2rem; /* top right bottom left */
+  color: var(--text-main-color);
+  flex: 1;
+}
+
+.results .first-column,
+.results .second-column {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  gap: 1rem;
+}
+
+.results .second-column {
+  align-items: flex-end;
+  justify-content: flex-end;
+  align-self: flex-end;
+}
+
+.results .first-column .converted-amount {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  width: 100%;
+  font-size: 1.8rem;
+  line-height: 2rem;
+  font-weight: 600;
+}
+
+.results .first-column .exchange-rate {
+  color: var(--text-tertiary-color);
+  font-size: 0.9rem;
+  font-weight: 400;
+}
+
+.results .second-column .card-explanation {
+  font-size: 0.9rem;
+  line-height: 2.5rem;
+  font-weight: 400;
+  color: var(--text-main-color);
+  background-color: var(--bg-light-main-color);
+  padding: 1rem 2rem;
+  border-radius: 8px;
+  width: 100%;
+  box-shadow: 0px 2px 4px 0px #0000000d;
+}
+
+@media (max-width: 768px) {
+  .results {
+    padding-left: 0;
+    justify-content: flex-start;
+  }
+  .results .first-column {
+    padding-left: 0;
+    justify-content: flex-start;
+    width: 100%;
+  }
+
+  .results .second-column {
+    display: none;
   }
 }

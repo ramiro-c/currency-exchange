@@ -2,7 +2,7 @@ const API_BASE_URL = "https://api.vatcomply.com";
 
 export const fetchExchangeRates = async (
   baseCurrency: string
-): Promise<Record<string, number>> => {
+): Promise<Exchange> => {
   try {
     const response = await fetch(`${API_BASE_URL}/rates?base=${baseCurrency}`);
 
@@ -10,8 +10,11 @@ export const fetchExchangeRates = async (
       throw new Error(`HTTP error! Status: ${response.status}`);
     }
 
+    // throw new Error(`Error!`);
+
     const data = await response.json();
-    return data.rates;
+
+    return { rates: data.rates, lastUpdate: data.date };
   } catch (error) {
     console.error("Error fetching exchange rates:", error);
     throw error;

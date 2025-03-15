@@ -1,0 +1,15 @@
+.exchange-info {
+  color: var(--text-main-color);
+  font-weight: 300;
+  font-size: 0.75rem;
+}
+
+.exchange-info a {
+  color: var(--text-main-color);
+}
+
+@media (max-width: 768px) {
+  .exchange-info {
+    width: 85dvw;
+  }
+}

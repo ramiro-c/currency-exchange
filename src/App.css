@@ -1,10 +1,8 @@
 main {
   height: 100dvh;
-
-  margin-top: var(--header-height);
   background: linear-gradient(
     to bottom,
-    var(--bg-main-color) 36%,
-    var(--bg-secondary-color) 36%
+    var(--bg-main-color) 38%,
+    var(--bg-secondary-color) 38%
   );
 }
