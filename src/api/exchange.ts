@@ -9,7 +9,7 @@ export const fetchExchangeRates = async (
     throw new Error(`HTTP error! Status: ${response.status}`);
   }
 
-  throw new Error(`Error!`);
+  // throw new Error(`Error!`);
 
   const data = await response.json();
 
