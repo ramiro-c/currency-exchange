@@ -40,8 +40,8 @@ const localCurrencies = [
 
 const ExchangeProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
   const [amount, setAmount] = useState("1.00");
-  const [fromCurrency, setFromCurrency] = useState(localCurrencies[0]);
-  const [toCurrency, setToCurrency] = useState(localCurrencies[1]);
+  const [fromCurrency, setFromCurrency] = useState(localCurrencies[1]);
+  const [toCurrency, setToCurrency] = useState(localCurrencies[0]);
   const [currencies, setCurrencies] = useState<Currency[]>(localCurrencies);
   const [error, setError] = useState<string | null>(null);
 
