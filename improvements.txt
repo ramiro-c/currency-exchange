@@ -1,0 +1,12 @@
+UX: 
+- Buscador al select de monedas
+- Loader en los rates? Carga muy rapido pero quizas valga la pena con un buen diseño
+- Sort de las monedas? Orden alfabético o priorizar las más usadas
+- Implementar swr o react-query para evitar calls a la api en periodos cortos de tiempo
+- Manejo de errores al hacer fetch de las monedas? Algun retry aparte del fallback
+
+DX:
+- Aliases para las rutas
+- Prettier
+- Reglas Eslint?
+

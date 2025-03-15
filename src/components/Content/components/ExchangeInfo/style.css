@@ -2,10 +2,26 @@
   color: var(--text-main-color);
   font-weight: 300;
   font-size: 0.75rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.2rem;
 }
 
 .exchange-info a {
   color: var(--text-main-color);
+}
+
+.exchange-info .divider {
+  height: 1px;
+  width: 10px;
+  background-color: var(--text-main-color);
+  display: inline-flex;
+}
+
+.exchange-info .exchange-update-date.error {
+  display: none;
 }
 
 @media (max-width: 768px) {

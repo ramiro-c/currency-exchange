@@ -76,7 +76,6 @@ const ExchangeProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
 
     try {
       const { rates, lastUpdate } = await fetchExchangeRates(fromCurrency.code);
-
       setExchange({ rates, lastUpdate });
     } catch (error) {
       setError("Error fetching rates");

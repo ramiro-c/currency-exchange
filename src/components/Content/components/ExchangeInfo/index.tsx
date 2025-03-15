@@ -24,34 +24,32 @@ const formatDate = (dateString: string) => {
   return date.toLocaleDateString("en-US", options);
 };
 
+const CurrencyLink = ({
+  currency,
+}: {
+  currency: Pick<Currency, "code" | "name">;
+}) => (
+  <a href={getHref(currency)} target="_blank" rel="noopener noreferrer">
+    {currency.name}
+  </a>
+);
+
 const ExchangeInfo = () => {
-  const { exchange, toCurrency, fromCurrency } = useExchange();
+  const { exchange, toCurrency, fromCurrency, isLoading, error } =
+    useExchange();
 
   return (
-    <p className="exchange-info">
-      <a
-        href={getHref({
-          code: fromCurrency.code,
-          name: fromCurrency.name,
-        })}
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        {fromCurrency.name}
-      </a>{" "}
-      to{" "}
-      <a
-        href={getHref({
-          code: toCurrency.code,
-          name: toCurrency.name,
-        })}
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        {toCurrency.name}
-      </a>{" "}
-      - Last update: {formatDate(exchange.lastUpdate)}
-    </p>
+    <div className="exchange-info">
+      <p>
+        <CurrencyLink currency={fromCurrency} /> to{" "}
+        <CurrencyLink currency={toCurrency} /> to conversion
+      </p>
+      {!error && <span className="divider"></span>}
+      <p className={`exchange-update-date ${error ? "error" : ""}`}>
+        Last updated{" "}
+        {isLoading ? "loading..." : formatDate(exchange.lastUpdate)}
+      </p>
+    </div>
   );
 };
 

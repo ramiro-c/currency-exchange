@@ -1,9 +1,10 @@
-import { useCallback, useMemo } from "react";
+import { useCallback } from "react";
 import { useExchange } from "../../hooks/useExchange";
 import useWindowResize from "../../hooks/useWindowResize";
 import CurrencyInput from "./components/CurrencyInput";
 import CurrencySelect from "./components/CurrencySelect";
 import ExchangeInfo from "./components/ExchangeInfo";
+import Result from "./components/Result";
 import SwitchButton from "./components/SwitchButton";
 import "./style.css";
 
@@ -17,14 +18,7 @@ const Content = () => {
     toCurrency,
     setToCurrency,
     currencies,
-    exchange,
   } = useExchange();
-
-  const handleSwitch = useCallback(() => {
-    const newToCurrency = fromCurrency;
-    setFromCurrency(toCurrency);
-    setToCurrency(newToCurrency);
-  }, [setFromCurrency, setToCurrency, fromCurrency, toCurrency]);
 
   const handleCurrencyChange = useCallback(
     (value: string, type: "from" | "to") => {
@@ -57,17 +51,6 @@ const Content = () => {
       ? "0"
       : parseFloat(amount).toLocaleString();
 
-  const converted = useMemo(() => {
-    if (exchange.rates && toCurrency) {
-      const numericAmount = parseFloat(amount) || 0;
-      const rate = exchange.rates[toCurrency.code] || 0;
-
-      const result = Number((numericAmount * rate).toFixed(2)).toLocaleString();
-
-      return result;
-    }
-  }, [amount, fromCurrency, toCurrency, exchange.rates]);
-
   return (
     <section className="content">
       <h2>
@@ -89,7 +72,7 @@ const Content = () => {
             selectedCurrency={fromCurrency}
             onChange={(value) => handleCurrencyChange(value, "from")}
           />
-          <SwitchButton onClick={handleSwitch} />
+          <SwitchButton />
           <CurrencySelect
             id="to-currency-select"
             label="To:"
@@ -100,16 +83,7 @@ const Content = () => {
         </div>
 
         <div className="results">
-          <div className="first-column">
-            <p className="converted-amount">
-              {localeAmount} {fromCurrency.name} =<br />
-              {converted} {toCurrency.name}
-            </p>
-            <p className="exchange-rate">
-              1 {fromCurrency.code} = {exchange.rates[toCurrency.code]}{" "}
-              {toCurrency.code}
-            </p>
-          </div>
+          <Result localeAmount={localeAmount} />
           <div className="second-column">
             <div className="card-explanation">
               <p>

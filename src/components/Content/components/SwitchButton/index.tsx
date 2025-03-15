@@ -1,16 +1,31 @@
+import { useCallback } from "react";
 import switchIcon from "../../../../assets/switch-button.svg";
+import { useExchange } from "../../../../hooks/useExchange";
 import "./style.css";
 
-type SwitchButtonProps = {
-  onClick: () => void;
-};
+const SwitchButton = () => {
+  const {
+    fromCurrency,
+    toCurrency,
+    setFromCurrency,
+    setToCurrency,
+    isLoading,
+  } = useExchange();
 
-const SwitchButton = ({ onClick }: SwitchButtonProps) => {
+  const handleSwitch = useCallback(() => {
+    if (isLoading) return;
+
+    const newToCurrency = fromCurrency;
+    setFromCurrency(toCurrency);
+    setToCurrency(newToCurrency);
+  }, [setFromCurrency, setToCurrency, fromCurrency, toCurrency, isLoading]);
+
   return (
     <button
-      className="switch-button"
+      className={`switch-button ${isLoading ? "disabled" : ""}`}
       type="button"
-      onClick={onClick}
+      onClick={handleSwitch}
+      disabled={isLoading}
       aria-label="Switch currencies"
     >
       <img src={switchIcon} alt="" />

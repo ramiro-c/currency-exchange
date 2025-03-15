@@ -23,7 +23,7 @@ const adjustIndex = (index: number) => {
 };
 
 const CurrencyInput = ({ value, symbol, onChange, id }: CurrencyInputProps) => {
-  const [paddingLeft, setPaddingLeft] = useState("1.5rem");
+  const [paddingLeft, setPaddingLeft] = useState(paddingMap[1]);
 
   useEffect(() => {
     setPaddingLeft(paddingMap[adjustIndex(symbol.length)]);

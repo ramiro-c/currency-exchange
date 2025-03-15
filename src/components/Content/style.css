@@ -72,24 +72,6 @@
   align-self: flex-end;
 }
 
-.results .first-column .converted-amount {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
-  gap: 1rem;
-  width: 100%;
-  font-size: 1.8rem;
-  line-height: 2rem;
-  font-weight: 600;
-}
-
-.results .first-column .exchange-rate {
-  color: var(--text-tertiary-color);
-  font-size: 0.9rem;
-  font-weight: 400;
-}
-
 .results .second-column .card-explanation {
   font-size: 0.9rem;
   line-height: 2.5rem;
@@ -107,6 +89,7 @@
     padding-left: 0;
     justify-content: flex-start;
   }
+
   .results .first-column {
     padding-left: 0;
     justify-content: flex-start;

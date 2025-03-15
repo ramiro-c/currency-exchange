@@ -8,6 +8,10 @@
   cursor: pointer;
 }
 
+.switch-button.disabled {
+  cursor: not-allowed;
+}
+
 .switch-button img {
   height: 42px;
   width: 42px;

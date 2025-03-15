@@ -1,6 +1,6 @@
 # Exchancy
 
-App que nos permite saber equivalencia entre monedas
+App que nos permite saber equivalencias entre diferentes monedas
 
 Actualmente se encuentra deployada en Netlify: https://exchancy.netlify.app/
 
