@@ -17,6 +17,7 @@ export interface ExchangeContextProps {
   currencies: Currency[];
   exchange: Exchange;
   isLoading: boolean;
+  error: string | null;
 }
 
 const ExchangeContext = createContext<ExchangeContextProps | undefined>(
@@ -42,6 +43,7 @@ const ExchangeProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
   const [fromCurrency, setFromCurrency] = useState(localCurrencies[0]);
   const [toCurrency, setToCurrency] = useState(localCurrencies[1]);
   const [currencies, setCurrencies] = useState<Currency[]>(localCurrencies);
+  const [error, setError] = useState<string | null>(null);
 
   const [exchange, setExchange] = useState<Exchange>({
     rates: {},
@@ -77,6 +79,7 @@ const ExchangeProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
 
       setExchange({ rates, lastUpdate });
     } catch (error) {
+      setError("Error fetching rates");
       console.error("Error fetching rates:", error);
     } finally {
       setIsLoading(false);
@@ -102,6 +105,7 @@ const ExchangeProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
       currencies,
       isLoading,
       exchange,
+      error,
     }),
     [amount, fromCurrency, toCurrency, currencies, isLoading, exchange]
   );

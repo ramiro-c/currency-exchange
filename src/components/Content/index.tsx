@@ -3,9 +3,9 @@ import { useExchange } from "../../hooks/useExchange";
 import useWindowResize from "../../hooks/useWindowResize";
 import CurrencyInput from "./components/CurrencyInput";
 import CurrencySelect from "./components/CurrencySelect";
+import ExchangeInfo from "./components/ExchangeInfo";
 import SwitchButton from "./components/SwitchButton";
 import "./style.css";
-import ExchangeInfo from "./components/ExchangeInfo";
 
 const Content = () => {
   const { isMobile } = useWindowResize();
@@ -53,7 +53,9 @@ const Content = () => {
   );
 
   const localeAmount =
-    amount === "" ? "0" : parseFloat(amount).toLocaleString();
+    amount === "" || isNaN(Number(amount))
+      ? "0"
+      : parseFloat(amount).toLocaleString();
 
   const converted = useMemo(() => {
     if (exchange.rates && toCurrency) {

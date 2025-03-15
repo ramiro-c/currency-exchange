@@ -7,3 +7,8 @@
   background-color: transparent;
   cursor: pointer;
 }
+
+.switch-button img {
+  height: 42px;
+  width: 42px;
+}
